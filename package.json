@@ -1,0 +1,22 @@
+{
+  "name": "lab2_http_crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js", 
+    "dev": "nodemon app.js",
+    "dev1": "nodemon obj1.js",
+    "dev2": "nodemon obj2.js",
+    "dev3": "nodemon obj3.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
