@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 });
 
 let hotels = [
-    { id: 1, name: 'Hotel Redoran', stars: 3, city: 'Mournehold', price_per_night: 15 },
+    { id: 1, name: 'Hotel Redoran', stars: 3, city: 'Mournhold', price_per_night: 15 },
     { id: 2, name: 'Hotel Nord', stars: 5, city: 'Riften', price_per_night: 50 },
     { id: 3, name: 'Hotel Khadjiit', stars: 2, city: 'Vivec', price_per_night: 5 }
 ];
@@ -69,18 +69,19 @@ app.get("/hotels", (req, res) => {
     const sort = req.query.sort;
     const order = req.query.order;
 
-    let result = hotels;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
 
-    // Поиск
+    let result = [...hotels];
+
     if (search) {
         result = result.filter(h =>
             h.name.toLowerCase().includes(search.toLowerCase())
         );
     }
 
-    // Сортировка
     if (sort) {
-        result = [...result].sort((a, b) => {
+        result.sort((a, b) => {
             if (a[sort] < b[sort]) {
                 return order === "desc" ? 1 : -1;
             }
@@ -93,9 +94,16 @@ app.get("/hotels", (req, res) => {
         });
     }
 
+    const start = (page - 1) * limit;
+    const end = start + limit;
+
+    const paginatedHotels = result.slice(start, end);
+
     res.json({
-        count: result.length,
-        hotels: result
+        page: page,
+        limit: limit,
+        total: result.length,
+        hotels: paginatedHotels
     });
 });
 

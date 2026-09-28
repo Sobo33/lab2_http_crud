@@ -448,6 +448,10 @@ app.delete("/hotels", (req, res) => {
     res.status(204).send();
 });
 
+app.get("/test-error", (req, res, next) => {
+    next(new Error("Тестовая ошибка"));
+});
+
 app.use((req, res) => {
     res.status(404).json({
         error: "Маршрут не найден"
