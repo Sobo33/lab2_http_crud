@@ -8,8 +8,7 @@
     "start": "app.js", 
     "dev": "nodemon app.js",
     "dev1": "nodemon obj1.js",
-    "dev2": "nodemon obj2.js",
-    "dev3": "nodemon obj3.js"
+    "dev2": "nodemon obj2.js"
   },
   "keywords": [],
   "author": "",

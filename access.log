@@ -1,6 +1,0 @@
-[2026-09-28T19:59:51.303Z] PATCH /hotels/1
-[2026-09-28T20:00:38.359Z] POST /hotels/bulk
-[2026-09-28T20:01:47.720Z] GET /hotels/stats
-[2026-09-28T20:02:33.431Z] GET /hotels/1/related
-[2026-09-28T20:06:07.046Z] GET /test-error
-[2026-09-28T20:06:55.878Z] DELETE /hotels
