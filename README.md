@@ -50,7 +50,6 @@ let items = [
 
 let nextId = 4;
 
-// Получить все элементы
 app.get("/items", (req, res) => {
     res.json({
         count: items.length,
@@ -58,7 +57,6 @@ app.get("/items", (req, res) => {
     });
 });
 
-// Получить один элемент
 app.get("/items/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const item = items.find(i => i.id === id);
@@ -72,7 +70,6 @@ app.get("/items/:id", (req, res) => {
     res.json(item);
 });
 
-// Создать элемент
 app.post("/items", (req, res) => {
     const { name, price, quantity } = req.body;
 
@@ -94,7 +91,6 @@ app.post("/items", (req, res) => {
     res.status(201).json(newItem);
 });
 
-// Обновить элемент
 app.put("/items/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const index = items.findIndex(i => i.id === id);
@@ -117,7 +113,6 @@ app.put("/items/:id", (req, res) => {
     res.json(items[index]);
 });
 
-// Удалить элемент
 app.delete("/items/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const index = items.findIndex(i => i.id === id);
@@ -136,7 +131,6 @@ app.delete("/items/:id", (req, res) => {
     });
 });
 
-// Обработка неизвестного маршрута
 app.use((req, res) => {
     res.status(404).json({
         error: "Маршрут не найден"
